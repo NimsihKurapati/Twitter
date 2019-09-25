@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Twitter{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'TwitterApp/style.css'%}" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5d966b074d.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style>
+ {
+  box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  display: border;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  </style>
+
+</head>
+<div class="row">
+    <div class="col-sm-3 sidenav" style="padding:80px;border-style:solid">
+
+        <div class="container-sm-2 text-center">
+            <div class="row content">
+                <div class="col-sm-2 sidenav">
+
+                    <li class="item">
+                        <a href="#" class="btn"><i class="fas fa-home"></i>Home</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn"><i class="fab fa-wpexplorer"></i>Explore</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn"><i class="far fa-bell"></i>Notifications</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn"><i class="fas fa-envelope"></i>Messages</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn"><i class="fas fa-bookmark"></i>Bookmarks</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn"><i class="fas fa-list"></i>Lists</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn"><i class="fas fa-user"></i>Profile</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn"><i class="fas fa-chevron-circle-down"></i>More</a>
+                        <div class="smenu">
+                            <a href="#">Moments</a>
+                            <a href="#">Twitter Ads</a>
+                            <a href="#">Analytics</a>
+                            <hr>
+                            <a href="#">Settings & Privacy</a>
+                            <a href="#">Help Center</a>
+                            <a href="#">Display</a>
+                            <hr>
+                            <a href="#" class="btn">Logout</a>
+                        </div>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 text-centre" style="padding-top:80px;border-style:solid">
+        <div class="container-sm-5", style="border-style:solid">
+            {% block body %}
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Post</button>
+</form>
+
+<hr>
+{%for x in object%}
+{{x.content}} <br>
+{{x.location}}<br>
+{{x.date_time}}<hr>
+{%endfor%}
+
+  <p><a href="{% url 'logout' %}">logout</a></p>
+{%endblock%}
+        </div>
+    </div>
+
+    <div class="col-sm-3 sidenav" style="padding: 80px; border-style:solid">
+        <div class="container-sm-2" style="margin-top:10%;border-style:solid">
+            <div class="well">
+                <a href="#" class="btn">ADS</a>
+            </div>
+            <div class="well">
+                <a href="#" class="btn">ADS</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

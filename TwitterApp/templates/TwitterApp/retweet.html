@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Retweet</title>
+</head>
+<body>
+    <div class="container" style="border-style:solid; margin-left:300px; margin-top:160px;margin-right:300px; ">
+        <div class="container"style="padding-left:40px; padding-right:40px; padding-top:40px;">
+            <div class="container"style="border-style:outset;
+                padding-left:40px; padding-right:40px;">
+                {%for x in obj1%}
+                    <h3>@{{x.user}}</h3>
+                    <h2>{{x.content}}</h2>
+                    <h4>{{x.date_time}}</h4>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="container" style="padding-left:40px; padding-right:40px; padding-top:10px; padding-bottom:40px;">
+            <form method="post" action=".">
+                {% csrf_token %}
+                <input type="text" name="comment" style="width: 853px; height: 70px;">
+                <input type="submit" name="submit" style="margin-top: 10px;">
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>

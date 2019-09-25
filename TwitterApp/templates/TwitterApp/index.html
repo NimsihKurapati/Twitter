@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Twitter{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'TwitterApp/style.css'%}" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5d966b074d.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style>
+ {
+  box-sizing: border-box;
+}
+
+input {
+
+  width: 60%;
+}
+
+textarea{
+rows:5;
+cols:75;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  display: border;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  list-style: none;
+  text-decoration: none;
+}
+
+.middle{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.menu{
+  width:300px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.item{
+  border-top: 1px solid #2980b9;
+  overflow: hidden;
+}
+.btn{
+  display: block;
+  padding: 16px 20px;
+  background: #3498db;
+  color: white;
+  position: relative;
+}
+.btn:before{
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background:#3498db;
+  left: 20px;
+  bottom: -7px;
+  transform: rotate(45deg);
+}
+.btn i{
+  margin-right: 10px;
+}
+.smenu{
+  margin-top:10px;
+  background: #333;
+  overflow: hidden;
+  transition: max-height 0.3s;
+  max-height: 0;
+}
+.smenu a{
+
+  display: block;
+  padding: 16px 26px;
+  color: white;
+  font-size: 14px;
+  margin: 1px 0;
+  position: relative;
+}
+
+.btnw3s {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.smenu a:before{
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 100%;
+  background: #3498db;
+  left: 0;
+  top: 0;
+  transition: 0.3s;
+  opacity: 0;
+}
+.smenu a:hover:before{
+  opacity: 1;
+}
+.item:target .smenu{
+  max-height: 80em;
+}
+
+
+  </style>
+
+</head>
+    <div class="row">
+        <div class="col-sm-3 sidenav" style="padding:80px;
+            margin-top: 50px;
+            margin-right:10px; margin-left:40px;">
+            <div class="row content">
+                <div class="col-sm-2 sidenav">
+                    <div class="middle" style="  margin-top:320px; margin-left: 140px;">
+                        <div class="menu">
+                            <li class="item" id='profile'>
+                                <a href="/index" class="btn"><i class="fas fa-home"></i>Home</a>
+                            </li>
+
+                            <li class="item" id="explore">
+                                <a href="/explore" class="btn"><i class="fab fa-wpexplorer"></i>Explore</a>
+                            </li>
+
+                            <li class="item" id="notification">
+                                <a href="/notifications" class="btn"><i class="far fa-bell"></i>Notifications</a>
+                            </li>
+
+                            <li class="item" id="messages">
+                                <a href="/messages" class="btn"><i class="fas fa-envelope"></i>Messages</a>
+                            </li>
+
+                            <li class="item" id="bookmark">
+                                <a href="/bookmarks" class="btn"><i class="fas fa-bookmark"></i>Bookmarks</a>
+                            </li>
+
+                            <li class="item" id="list">
+                                <a href="/lists" class="btn"><i class="fas fa-list"></i>Lists</a>
+                            </li>
+
+                            <li class="item" id="profile1">
+                                <a href="/profile" class="btn"><i class="fas fa-user"></i>Profile</a>
+                            </li>
+
+                            <li class="item" id="settings">
+                                <a href="#settings" class="btn"><i class="fas fa-cog"></i>Settings</a>
+                                <div class="smenu">
+                                    <a href="/momemts">Moments</a>
+                                    <a href="/twitter_ads">Twitter Ads</a>
+                                    <a href="/analytics">Analytics</a>
+                                    <hr>
+                                    <a href="/Settingsandprivacy">Settings & Privacy</a>
+                                    <a href="/help_center">Help Center</a>
+                                    <a href="/display">Display</a>
+                                </div>
+                            </li>
+
+                            <li class="item">
+                                <a class="btn" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-6 text-centre" style="padding-top:80px;margin-top: 50px;">
+            <div class="container-sm-5">
+                {% block body %}
+                <div class="container">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btnw3s" >Post</button>
+                </form>
+                </div>
+<hr>
+                {%for x in object%}
+                    <div class="well">
+                        <h3><img src="http://localhost:8000/media/profile/998451.jpeg"  class="avatar"> @{{x.user}}</h3>
+                        {% if x.comment %}
+                            <h3><strong>{{x.comment}}</strong></h3>
+                        {% endif %}
+                        {% if x.RT %}
+                            <strong>Retweeted</strong>
+                            <h4><strong>@{{x.original}}</strong></h4>
+                        {% endif %}
+                        <h3>{{x.content}}</h3>
+                        {{x.location}}<br>
+                        {{x.date_time}}<br>
+                    </div>
+                {%endfor%}
+
+
+                <p><a href="{% url 'logout' %}">logout</a></p>
+                {%endblock%}
+
+            </div>
+        </div>
+
+        <div class="col-sm-2 sidenav" style="">
+            <div class="container-sm-2" style="margin-top: 200px; width:250px; margin-right:10px;">
+                {%for x in allusers%}
+                <div class="well">
+                    <a href="{% url 'public' x.username %}" class="btn1">{{x}}</a>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
